@@ -55,47 +55,7 @@ public void llenarCB(JComboBox cb,String firstItem,String query,int column) thro
     
          
 }
-public ResultSet consultaTabla(String tabla){
-    /*realiza una consulta a BD
-    parametros 1 = equipo, 2 = equipo_laboratorio, 3 = reactivos
-    devuelve un resultset = resultado de la consulta*/
-    try {
-        bd.iniciarConexion();
-        String consulta;
-        switch(tabla){
-            case "usuarios":
-                consulta = "select * from usuarios;";
-                comando = conexion.createStatement();            
-                resultados = comando.executeQuery(consulta);
-                System.out.println(consulta);
-                return resultados;
-            case "mesa":
-/*                consulta = "select nombre_mesa, impresa from mesa where mesero = '"+a.getMesero()+"';";
-                comando = conexion.createStatement();            
-                resultados = comando.executeQuery(consulta);
-                System.out.println(consulta);
-                return resultados;*/
-            case "mesa2":
-                consulta = "select * from mesa ;";
-                comando = conexion.createStatement();            
-                resultados = comando.executeQuery(consulta);
-                System.out.println(consulta);
-                return resultados;
-            case "B":
-                consulta = "select * from reactivos;";
-                comando = conexion.createStatement();            
-                resultados = comando.executeQuery(consulta);
-                System.out.println(consulta);
-                return resultados;
-        }
-        //System.out.println(cadena);
-        
-    } catch (Exception ex) {
-        Logger.getLogger(Metodos.class.getName()).log(Level.SEVERE, null, ex);
-    }
 
-return null;
-}
 public String  extraeHora(){
         Calendar fecha = new GregorianCalendar();
         int hora = fecha.get(Calendar.HOUR_OF_DAY);
@@ -137,15 +97,16 @@ Calendar fecha = new GregorianCalendar();
         int mes = fecha.get(Calendar.MONTH);
         return mes;
 }
-public void llenaTabla(JTable tbl) throws SQLException{
+public void llenaTabla(JTable tbl,String query) throws Exception{
+    //Copiar este método y ajustarlo al JTable deseado
     DefaultTableModel tm;
     tm = (DefaultTableModel)tbl.getModel();
         tm.setRowCount(0);
-    
-        resultados = consultaTabla("usuarios");
+        //query consulta para seleccionar los datos para llenar el JTable
+        resultados = bd.select(query);
         while (resultados.next())
         {
-            
+            //agrega en el JTable las columnas seleccionadas de la consulta.
             tm.addRow(new Object[]{resultados.getString("nombre_usuario"),resultados.getString("contrasena")});
         }    
 }
