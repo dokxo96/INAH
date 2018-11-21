@@ -9,18 +9,23 @@ import Clases.BD;
 import java.sql.ResultSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import inah.dsm.Registro_Tramite;
 /**
  *
  * @author carch
  */
 public class NewJFrame extends javax.swing.JFrame {
 BD bd = new BD();
+Registro_Tramite pnl1;
+
     /**
      * Creates new form NewJFrame
      */
 protected ResultSet rs;
-    public NewJFrame() {
+    public NewJFrame() throws Exception {
+        
         initComponents();
+    
     }
 
     /**
@@ -33,6 +38,11 @@ protected ResultSet rs;
     private void initComponents() {
 
         jButton1 = new javax.swing.JButton();
+        try {
+            registro_Tramite1 = new inah.dsm.Registro_Tramite();
+        } catch (java.lang.Exception e1) {
+            e1.printStackTrace();
+        }
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -50,29 +60,28 @@ protected ResultSet rs;
             .addGroup(layout.createSequentialGroup()
                 .addGap(74, 74, 74)
                 .addComponent(jButton1)
-                .addContainerGap(253, Short.MAX_VALUE))
+                .addGap(63, 63, 63)
+                .addComponent(registro_Tramite1, javax.swing.GroupLayout.PREFERRED_SIZE, 475, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(148, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(93, 93, 93)
-                .addComponent(jButton1)
-                .addContainerGap(184, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(93, 93, 93)
+                        .addComponent(jButton1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addComponent(registro_Tramite1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(200, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-    try {        
-        rs = bd.select("SELECT * FROM USUARIOS;");
-        while (rs.next())
-        {
-            System.out.println(rs.getString(1)+" "+rs.getString(2));
-        }
-    } catch (Exception ex) {
-        Logger.getLogger(NewJFrame.class.getName()).log(Level.SEVERE, null, ex);
-    }
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -105,12 +114,17 @@ protected ResultSet rs;
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new NewJFrame().setVisible(true);
+                try {
+                    new NewJFrame().setVisible(true);
+                } catch (Exception ex) {
+                    Logger.getLogger(NewJFrame.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private inah.dsm.Registro_Tramite registro_Tramite1;
     // End of variables declaration//GEN-END:variables
 }

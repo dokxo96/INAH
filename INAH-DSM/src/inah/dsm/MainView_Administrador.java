@@ -74,6 +74,12 @@ public class MainView_Administrador extends javax.swing.JFrame {
         tblUsuarios = new javax.swing.JTable();
         btnModificar = new javax.swing.JLabel();
         btnEliminar = new javax.swing.JLabel();
+        REGISTRO_TRAMITE = new javax.swing.JPanel();
+        try {
+            registro_Tramite1 = new inah.dsm.Registro_Tramite();
+        } catch (java.lang.Exception e1) {
+            e1.printStackTrace();
+        }
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setUndecorated(true);
@@ -387,6 +393,25 @@ public class MainView_Administrador extends javax.swing.JFrame {
 
         PANELGENERAL.addTab("REGISTRO DE USUARIO", REGISTRO);
 
+        javax.swing.GroupLayout REGISTRO_TRAMITELayout = new javax.swing.GroupLayout(REGISTRO_TRAMITE);
+        REGISTRO_TRAMITE.setLayout(REGISTRO_TRAMITELayout);
+        REGISTRO_TRAMITELayout.setHorizontalGroup(
+            REGISTRO_TRAMITELayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(REGISTRO_TRAMITELayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(registro_Tramite1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(325, Short.MAX_VALUE))
+        );
+        REGISTRO_TRAMITELayout.setVerticalGroup(
+            REGISTRO_TRAMITELayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(REGISTRO_TRAMITELayout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(registro_Tramite1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(372, Short.MAX_VALUE))
+        );
+
+        PANELGENERAL.addTab("REGISTRO TRAMITE", REGISTRO_TRAMITE);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -431,96 +456,99 @@ public class MainView_Administrador extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jLabel7MouseClicked
 
+    private void btnCancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelarMouseClicked
+
+    }//GEN-LAST:event_btnCancelarMouseClicked
+
     private void btnAgregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMouseClicked
-            String nom = txtNombre.getText();
-            String ap = txtAP.getText();
-            String am = txtAM.getText();
-            String area = ItemArea.getSelectedItem().toString();
-            String correo = txtCorreo.getText();
-            String usuario = txtUsuario.getText();
-            String contra = txtContraseña.getText();
-            int id_p=0,id_area=0;
-            char tU;
-            String gy="";
-            String apellidos= ap+""+am;
-            if(ItemTipoU.getSelectedItem().toString().equals("Operador") ){
-                id_p='O';
-                gy="O";
-            }
-            if(ItemTipoU.getSelectedItem().toString().equals("Administrador") ){
-                id_p='A';
-                gy="A";
-            }
-            if(ItemTipoU.getSelectedItem().toString().equals("Delegado") ){
-                id_p='D';
-                gy="D";
-            }
-            showMessageDialog(null,id_p);
+        String nom = txtNombre.getText();
+        String ap = txtAP.getText();
+        String am = txtAM.getText();
+        String area = ItemArea.getSelectedItem().toString();
+        String correo = txtCorreo.getText();
+        String usuario = txtUsuario.getText();
+        String contra = txtContraseña.getText();
+        int id_p=0,id_area=0;
+        char tU;
+        String gy="";
+        String apellidos= ap+""+am;
+        if(ItemTipoU.getSelectedItem().toString().equals("Operador") ){
+            id_p='O';
+            gy="O";
+        }
+        if(ItemTipoU.getSelectedItem().toString().equals("Administrador") ){
+            id_p='A';
+            gy="A";
+        }
+        if(ItemTipoU.getSelectedItem().toString().equals("Delegado") ){
+            id_p='D';
+            gy="D";
+        }
+        showMessageDialog(null,id_p);
         try {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(MainView_Administrador.class.getName()).log(Level.SEVERE, null, ex);
         }
-            String conecctionUrl = "jdbc:sqlserver://localhost:1433;databaseName=BD_INAH"; 
-            Connection cn = null;
+        String conecctionUrl = "jdbc:sqlserver://localhost:1433;databaseName=BD_INAH";
+        Connection cn = null;
         try {
             cn = DriverManager.getConnection(conecctionUrl, "sa", "123");
         } catch (SQLException ex) {
             Logger.getLogger(MainView_Administrador.class.getName()).log(Level.SEVERE, null, ex);
         }
-            Statement sentencia = null;
+        Statement sentencia = null;
         try {
             sentencia = cn.createStatement();
         } catch (SQLException ex) {
             Logger.getLogger(MainView_Administrador.class.getName()).log(Level.SEVERE, null, ex);
         }
-            
-            ResultSet r = null;
+
+        ResultSet r = null;
         try {
             r = sentencia.executeQuery("select id_persona from persona where nombres='"+nom+"'");
         } catch (SQLException ex) {
             Logger.getLogger(MainView_Administrador.class.getName()).log(Level.SEVERE, null, ex);
         }
-            if (r!=null){
-                try {
-                    while(r.next())
-                        id_p = r.getInt("id_persona");
-                } catch (SQLException ex) {
-                    Logger.getLogger(MainView_Administrador.class.getName()).log(Level.SEVERE, null, ex);
-                }
+        if (r!=null){
+            try {
+                while(r.next())
+                id_p = r.getInt("id_persona");
+            } catch (SQLException ex) {
+                Logger.getLogger(MainView_Administrador.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
-               ResultSet r2 = null;
+        }
+
+        ResultSet r2 = null;
         try {
             r2 = sentencia.executeQuery("select id_area from area where nombre_area='"+area+"'");
         } catch (SQLException ex) {
             Logger.getLogger(MainView_Administrador.class.getName()).log(Level.SEVERE, null, ex);
         }
-            if (r2!=null){
-                try {
-                    while(r2.next())
-                        id_area = r2.getInt("id_area");
-                } catch (SQLException ex) {
-                    Logger.getLogger(MainView_Administrador.class.getName()).log(Level.SEVERE, null, ex);
-                }
+        if (r2!=null){
+            try {
+                while(r2.next())
+                id_area = r2.getInt("id_area");
+            } catch (SQLException ex) {
+                Logger.getLogger(MainView_Administrador.class.getName()).log(Level.SEVERE, null, ex);
             }
-            showMessageDialog(null,id_p + "'"+id_p+"'" );
-            String sql = "INSERT INTO persona VALUES ('"+nom+"','"+apellidos+"','"+correo+"',"+id_area+",'"+usuario+"','"+contra+"','"+gy+"')";
-            //String sql1 = "INSERT INTO usuarios VALUES ('"+usuario+"','"+contra+"',"+id_p+")";
-                try {
-                sentencia.executeUpdate(sql);
-                } catch (SQLException ex) {
-                    Logger.getLogger(MainView_Administrador.class.getName()).log(Level.SEVERE, null, ex);
-                }
-               
-               
-       showMessageDialog(null,"Usuario Agregado");
-       txtNombre.setText("");
-       txtContraseña.setText("");
-       txtAP.setText("");
-       txtAM.setText("");
-       txtCorreo.setText("");
-       txtUsuario.setText("");
+        }
+        showMessageDialog(null,id_p + "'"+id_p+"'" );
+        String sql = "INSERT INTO persona VALUES ('"+nom+"','"+apellidos+"','"+correo+"',"+id_area+",'"+usuario+"','"+contra+"','"+gy+"')";
+        //String sql1 = "INSERT INTO usuarios VALUES ('"+usuario+"','"+contra+"',"+id_p+")";
+        try {
+            sentencia.executeUpdate(sql);
+        } catch (SQLException ex) {
+            Logger.getLogger(MainView_Administrador.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        showMessageDialog(null,"Usuario Agregado");
+        txtNombre.setText("");
+        txtContraseña.setText("");
+        txtAP.setText("");
+        txtAM.setText("");
+        txtCorreo.setText("");
+        txtUsuario.setText("");
     }//GEN-LAST:event_btnAgregarMouseClicked
 
     private void txtUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuarioActionPerformed
@@ -560,10 +588,6 @@ public class MainView_Administrador extends javax.swing.JFrame {
     }
     
     
-    private void btnCancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelarMouseClicked
-      
-    }//GEN-LAST:event_btnCancelarMouseClicked
-
     /**
      * @param args the command line arguments
      */
@@ -610,6 +634,7 @@ public class MainView_Administrador extends javax.swing.JFrame {
     private javax.swing.JLabel NombreLbl;
     private javax.swing.JTabbedPane PANELGENERAL;
     private javax.swing.JPanel REGISTRO;
+    private javax.swing.JPanel REGISTRO_TRAMITE;
     private javax.swing.JLabel btnAgregar;
     private javax.swing.JLabel btnCancelar;
     private javax.swing.JLabel btnEliminar;
@@ -632,6 +657,7 @@ public class MainView_Administrador extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTable1;
     private javax.swing.JList<String> listMunicipio;
+    private inah.dsm.Registro_Tramite registro_Tramite1;
     private javax.swing.JTable tblUsuarios;
     private javax.swing.JTextField txtAM;
     private javax.swing.JTextField txtAP;

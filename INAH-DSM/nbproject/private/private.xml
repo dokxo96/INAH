@@ -3,10 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/INAH-DSM/INAH-DSM/nbproject/build-impl.xml</file>
-            <file>file:/C:/INAH-DSM/INAH-DSM/src/Clases/BD.java</file>
-            <file>file:/C:/INAH-DSM/INAH-DSM/src/inah/dsm/LoginView.java</file>
-            <file>file:/C:/INAH-DSM/INAH-DSM/src/inah/dsm/MainView_Administrador.java</file>
+            <file>file:/C:/INAH-DSM/INAH/INAH-DSM/src/inah/dsm/MainView_Administrador.java</file>
+            <file>file:/C:/INAH-DSM/INAH/INAH-DSM/src/inah/dsm/MainView_operador.java</file>
+            <file>file:/C:/INAH-DSM/INAH/INAH-DSM/src/Clases/BD.java</file>
+            <file>file:/C:/INAH-DSM/INAH/INAH-DSM/src/inah/dsm/LoginView.java</file>
         </group>
     </open-files>
 </project-private>

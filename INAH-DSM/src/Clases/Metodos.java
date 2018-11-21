@@ -1,4 +1,5 @@
 package Clases;
+import Clases.BD;
 //import Datos.*;
 import java.io.File;
 import java.sql.Connection;
@@ -13,6 +14,7 @@ import java.util.logging.Logger;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.AudioFileFormat;
 import javax.sound.sampled.Clip;
+import javax.swing.JComboBox;
 import static javax.swing.JOptionPane.showMessageDialog;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -22,6 +24,7 @@ import javax.swing.table.DefaultTableModel;
  * @author Oliveros.Carlos
  */
 public class Metodos {
+BD bd = new BD();
 //Acciones a = new Acciones();
 //Usuario u = new Usuario();
 private Connection conexion = null;
@@ -30,66 +33,34 @@ private ResultSet resultados = null;
 String time,date;
 public Metodos()
 {}
-public void iniciarConexion() throws Exception{
-        String user="postgres";
-        String pass = "robo";
-        try{
-            Class.forName( "com.mysql.jdbc.Driver"); 
-            
-            conexion = DriverManager.getConnection("jdbc:postgresql://localhost/SCN",user,pass);
-            System.out.println("conectado");
-        }catch(Exception e)
-        {
-            System.err.println("Error al inciar la conexion a base de datos\t\t");            
-            e.printStackTrace();            
-            throw e;
-        }
-    }
-public ResultSet select(String consulta) throws SQLException, Exception{
-        /*
-    Realiza una consulta y retorna el resultado(resultset)
-    
-    */
-        try {
-            iniciarConexion();
-            String instruccion = consulta;
-            System.out.println(consulta);
-            comando = conexion.createStatement();            
-            resultados = comando.executeQuery(instruccion);
-            return resultados;
-        } catch (SQLException e) {            
-            e.printStackTrace();            
-            throw e;
-        }        
-    }
-public void insertar(String consulta) throws SQLException, Exception{
-        
-        try {
-            iniciarConexion();
-            String instruccion = "INSERT INTO"+consulta;
-            System.out.println(consulta);
-            comando = conexion.createStatement();            
-            resultados = comando.executeQuery(instruccion);
-        } catch (SQLException e) {            
-            e.printStackTrace();            
-            throw e;
-        }        
-    }
 
-public void cerrar() throws SQLException{
-        try {
-            conexion.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-            throw e;
-        }
-    }
+public void llenarCB(JComboBox cb,String firstItem,String query,int column) throws Exception{
+    /*se llena comboBox
+      recibe 4 parametros
+        la variable del comboBox
+        El valor inicial que se va a mostrar en el combo box
+        consulta a la base de datos select
+        el numero de la columna del registro retornado por la consulta
+    */
+        cb.removeAllItems();
+        cb.addItem(firstItem);
+        ResultSet m;
+
+        m = bd.select(query);
+         while (m.next())
+        {
+            cb.addItem(m.getString(column));
+            
+        } 
+    
+         
+}
 public ResultSet consultaTabla(String tabla){
     /*realiza una consulta a BD
     parametros 1 = equipo, 2 = equipo_laboratorio, 3 = reactivos
     devuelve un resultset = resultado de la consulta*/
     try {
-        iniciarConexion();
+        bd.iniciarConexion();
         String consulta;
         switch(tabla){
             case "usuarios":
