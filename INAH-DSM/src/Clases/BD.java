@@ -136,10 +136,8 @@ public boolean entrar(String usuario,String contrasena) throws Exception{
                             }//switch
                             return true;
                          }
-                        else
-                        conexion.close();   
                         }//while
-                    
+                        conexion.close(); 
                     return false;
                 }//if resultados != null
                 else
