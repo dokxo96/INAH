@@ -398,16 +398,16 @@ public class MainView_Administrador extends javax.swing.JFrame {
         REGISTRO_TRAMITELayout.setHorizontalGroup(
             REGISTRO_TRAMITELayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(REGISTRO_TRAMITELayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(19, 19, 19)
                 .addComponent(registro_Tramite1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(325, Short.MAX_VALUE))
+                .addContainerGap(316, Short.MAX_VALUE))
         );
         REGISTRO_TRAMITELayout.setVerticalGroup(
             REGISTRO_TRAMITELayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(REGISTRO_TRAMITELayout.createSequentialGroup()
-                .addGap(26, 26, 26)
+                .addGap(28, 28, 28)
                 .addComponent(registro_Tramite1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(372, Short.MAX_VALUE))
+                .addContainerGap(370, Short.MAX_VALUE))
         );
 
         PANELGENERAL.addTab("REGISTRO TRAMITE", REGISTRO_TRAMITE);
