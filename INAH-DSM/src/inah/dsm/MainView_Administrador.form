@@ -24,10 +24,7 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="32" max="32767" attributes="0"/>
-          </Group>
+          <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -57,7 +54,7 @@
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="32767" attributes="0"/>
                   <Component id="jLabel7" min="-2" pref="84" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -268,7 +265,7 @@
                               <Component id="jPanel7" min="-2" max="-2" attributes="0"/>
                               <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="261" max="32767" attributes="0"/>
+                          <EmptySpace pref="182" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -330,7 +327,7 @@
                                           <Component id="txtCorreo" max="32767" attributes="0"/>
                                           <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
                                               <Component id="ItemArea" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="ItemTipoU" pref="132" max="32767" attributes="0"/>
+                                              <Component id="ItemTipoU" max="32767" attributes="0"/>
                                           </Group>
                                           <Component id="txtAM" alignment="0" min="-2" pref="131" max="-2" attributes="0"/>
                                           <Group type="102" alignment="0" attributes="0">
@@ -476,11 +473,13 @@
                     <Component class="javax.swing.JComboBox" name="ItemArea">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="4">
+                          <StringArray count="6">
                             <StringItem index="0" value="Seleccione area"/>
-                            <StringItem index="1" value="Restauracion"/>
-                            <StringItem index="2" value="Monumentos"/>
-                            <StringItem index="3" value="Reparacion"/>
+                            <StringItem index="1" value="MONUMENTOS HIST&#xd3;RICOS"/>
+                            <StringItem index="2" value="ARQUEOLOG&#xcd;A"/>
+                            <StringItem index="3" value="CONSERVACI&#xd3;N"/>
+                            <StringItem index="4" value="JUNTAS VECINALES"/>
+                            <StringItem index="5" value="SIN AREA ASIGNADA"/>
                           </StringArray>
                         </Property>
                       </Properties>
@@ -526,12 +525,10 @@
                     </Container>
                     <Component class="javax.swing.JLabel" name="btnAgregar">
                       <Properties>
-
-                        <Property name="text" type="java.lang.String" value="AGREGAR"/>
-
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/Images/mas.png"/>
                         </Property>
+                        <Property name="text" type="java.lang.String" value="AGREGAR"/>
                       </Properties>
                       <Events>
                         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnAgregarMouseClicked"/>

@@ -174,6 +174,7 @@ Usuario u = new Usuario();
         String Estado;
         u.setNombre(UserTxt.getText());
         bd.entrar(UserTxt.getText(),PassTxt.getText());
+        this.setVisible(false);
     } catch (Exception ex) {
         Logger.getLogger(LoginView.class.getName()).log(Level.SEVERE, null, ex);
     }
