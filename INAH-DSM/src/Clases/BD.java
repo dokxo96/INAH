@@ -228,6 +228,29 @@ ResultSet s = select(cad);
     conexion.close();
     return 0;
 }
+public  boolean ReiniciarCont(String usuario,int id_p ,String resp_V,String NContraseña ) throws Exception{
+String user,ans,pass;
+int id;
+    try{
+        if(!u.getNombre().equals("")){
+            //obtener el id_persona con el nombre de usuario
+             int id_Persona=Integer.parseInt(select("select id_persona from persona where NOMBRE_USUARIO='"+u.getNombre()+"'").toString());
+             //obtener la respuesta secreta con el nombre de usuario 
+             String Resp=(select("select Resp_Secrete from persona where NOMBRE_USUARIO='"+u.getNombre()+"'").toString());
+             String id_pregunta=select("SELECT id_pregunta FROM PREGUNTAS WHERE ID_PREGUNTA=(\n" +
+                "  SELECT ID_PREGUNTA AS ID FROM PERSONA_PREGUNTA WHERE ID_PERSONA= "+id_p+")").toString();
+             System.out.println("update persona set CONTRASENA ='"+NContraseña+"' where id_persona="+id_Persona);
+             
+             if(id_pregunta==id_p+"" && resp_V==Resp){
+             
+             select("update persona set CONTRASENA ='"+NContraseña+"' where id_persona="+id_Persona);}
+             System.out.println("cambio");
+             return true;
+        }
+    }//try
+    catch(Exception e){}//catch
+return false;
+}
 
 }
 
