@@ -1,19 +1,30 @@
 package inah.dsm;
 import Clases.*;
+import Componentes.slidePanel;
+import static javax.swing.JOptionPane.showMessageDialog;
 public class Registro_Tramite extends javax.swing.JPanel {
 Metodos M = new Metodos();
+slidePanel pnl2;
     /**
      * Creates new form Registro_Tramite
      */
     public Registro_Tramite(String nombre){}
     public Registro_Tramite() throws Exception{
+                
+        
         initComponents();
         String sm = "SELECCIONAR MUNICIPIO";
         String query_M = "SELECT * FROM MUNICIPIOS";
         String so = "SELECCIONAR OPERADOR";
         String query_O = "SELECT * FROM PERSONA";
+        String st = "SELECCIONAR TIPO DE TRAMITE";
+        String query_T = "SELECT * FROM TIPOS_TRAMITES";
         M.llenarCB(cbMunicipios,sm,query_M,2);
         M.llenarCB(cbOperadores,so,query_O,2);
+        M.llenarCB(cbTipoTramite,st,query_T,1);
+        pnl2 = new slidePanel(1,"INAH-01-001");
+        pnl2.setBounds(400,200,700,400);
+        add(pnl2);
     }
 
     /**
@@ -37,7 +48,7 @@ Metodos M = new Metodos();
         jLabel5 = new javax.swing.JLabel();
         txtDir = new javax.swing.JTextField();
         txtCel = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cbTipoTramite = new javax.swing.JComboBox<>();
 
         jLabel2.setText("jLabel2");
 
@@ -64,7 +75,25 @@ Metodos M = new Metodos();
 
         jLabel5.setText("NUMERO DE CELULAR");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbTipoTramite.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbTipoTramite.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbTipoTramiteItemStateChanged(evt);
+            }
+        });
+        cbTipoTramite.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentHidden(java.awt.event.ComponentEvent evt) {
+                cbTipoTramiteComponentHidden(evt);
+            }
+            public void componentResized(java.awt.event.ComponentEvent evt) {
+                cbTipoTramiteComponentResized(evt);
+            }
+        });
+        cbTipoTramite.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbTipoTramiteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -85,8 +114,8 @@ Metodos M = new Metodos();
                                 .addGap(88, 88, 88)
                                 .addComponent(cbOperadores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(75, 75, 75)
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(278, Short.MAX_VALUE))
+                                .addComponent(cbTipoTramite, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(531, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel5)
@@ -106,7 +135,7 @@ Metodos M = new Metodos();
                     .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cbMunicipios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cbOperadores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbTipoTramite, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27)
                 .addComponent(jLabel3)
                 .addGap(27, 27, 27)
@@ -119,19 +148,44 @@ Metodos M = new Metodos();
                 .addComponent(jLabel5)
                 .addGap(18, 18, 18)
                 .addComponent(txtCel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addContainerGap(166, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void cbMunicipiosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbMunicipiosActionPerformed
-        // TODO add your handling code here:
+    
     }//GEN-LAST:event_cbMunicipiosActionPerformed
+
+    private void cbTipoTramiteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbTipoTramiteActionPerformed
+    Object TT = cbTipoTramite.getSelectedItem();
+    if(TT!="SELECCIONAR TIPO DE TRAMITE")
+        if(TT!=null){
+            showMessageDialog(null,"aqui");
+    pnl2 = null;
+    pnl2 = new slidePanel(1,TT.toString());
+    pnl2.setBounds(400,200,700,400);
+    add(pnl2);}
+    //if(TT.equals("SELECCIONAR TIPO DE TRAMITE"))
+   
+    }//GEN-LAST:event_cbTipoTramiteActionPerformed
+
+    private void cbTipoTramiteComponentHidden(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_cbTipoTramiteComponentHidden
+ 
+    }//GEN-LAST:event_cbTipoTramiteComponentHidden
+
+    private void cbTipoTramiteComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_cbTipoTramiteComponentResized
+   
+    }//GEN-LAST:event_cbTipoTramiteComponentResized
+
+    private void cbTipoTramiteItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbTipoTramiteItemStateChanged
+    
+    }//GEN-LAST:event_cbTipoTramiteItemStateChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> cbMunicipios;
     private javax.swing.JComboBox<String> cbOperadores;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> cbTipoTramite;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

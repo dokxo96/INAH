@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package pruebas;
+import Componentes.slidePanel;
 import Conexión_sql.conexión;
 import Clases.BD;
 import java.sql.ResultSet;
@@ -17,15 +18,13 @@ import inah.dsm.Registro_Tramite;
 public class NewJFrame extends javax.swing.JFrame {
 BD bd = new BD();
 Registro_Tramite pnl1;
-
     /**
      * Creates new form NewJFrame
      */
 protected ResultSet rs;
     public NewJFrame() throws Exception {
         
-        initComponents();
-    
+        
     }
 
     /**
@@ -58,23 +57,22 @@ protected ResultSet rs;
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(74, 74, 74)
+                .addComponent(registro_Tramite1, javax.swing.GroupLayout.PREFERRED_SIZE, 720, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1)
-                .addGap(63, 63, 63)
-                .addComponent(registro_Tramite1, javax.swing.GroupLayout.PREFERRED_SIZE, 475, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(148, Short.MAX_VALUE))
+                .addContainerGap(64, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(93, 93, 93)
-                        .addComponent(jButton1))
+                        .addGap(38, 38, 38)
+                        .addComponent(registro_Tramite1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(36, 36, 36)
-                        .addComponent(registro_Tramite1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(200, Short.MAX_VALUE))
+                        .addGap(299, 299, 299)
+                        .addComponent(jButton1)))
+                .addContainerGap(198, Short.MAX_VALUE))
         );
 
         pack();
