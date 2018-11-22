@@ -398,16 +398,16 @@ public class MainView_Administrador extends javax.swing.JFrame {
         REGISTRO_TRAMITELayout.setHorizontalGroup(
             REGISTRO_TRAMITELayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(REGISTRO_TRAMITELayout.createSequentialGroup()
-                .addGap(19, 19, 19)
+                .addGap(36, 36, 36)
                 .addComponent(registro_Tramite1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(316, Short.MAX_VALUE))
+                .addContainerGap(201, Short.MAX_VALUE))
         );
         REGISTRO_TRAMITELayout.setVerticalGroup(
             REGISTRO_TRAMITELayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(REGISTRO_TRAMITELayout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(registro_Tramite1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(370, Short.MAX_VALUE))
+                .addGap(30, 30, 30)
+                .addComponent(registro_Tramite1, javax.swing.GroupLayout.PREFERRED_SIZE, 421, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(246, Short.MAX_VALUE))
         );
 
         PANELGENERAL.addTab("REGISTRO TRAMITE", REGISTRO_TRAMITE);
